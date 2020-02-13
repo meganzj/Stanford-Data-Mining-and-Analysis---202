@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+
+  <head>
+    <title>Stats 202 &middot; Stanford University</title>
+    <link href="https://web.stanford.edu/class/stats202/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="print" href="https://web.stanford.edu/class/stats202/css/print.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="page-header">
+	<h1>Stats 202: Data Mining and Analysis<br>
+	  <small>Fall 2019</small></h1>
+      </div>
+      <div class="row">
+	<div id="navigation" class="span2">
+	  <ul class="nav nav-pills nav-stacked" style="width:160px;">
+        <li id="syllabus"><a href="http://web.stanford.edu/class/stats202/">Syllabus</a></li>
+	    <li id="lectures"><a href="http://web.stanford.edu/class/stats202/content/lectures.html">Lectures</a></li>
+            <li id="homework"><a href="http://web.stanford.edu/class/stats202/content/homework.html">Homework</a></li>
+            <li id="practice"><a href="http://web.stanford.edu/class/stats202/practice.html">Exams</a></li>
+            <li id="scpd"><a href="http://web.stanford.edu/class/stats202/scpd.html">SCPD info</a></li>
+            <li id="piazza"><a href="https://piazza.com/stanford/fall2019/stats202">Piazza forum</a></li>
+            <li id="gradescope"><a href="https://gradescope.com/courses/65557">Gradescope</a></li>
+            <li id="Kaggle"><a href="http://web.stanford.edu/class/stats202/content/kaggle.html">Kaggle</a></li>
+	  </ul>
+	</div>
+	<div class="span1">
+	</div>
+	<div class="span9">
+
+
+
+<p>This homework will not be graded, so there is <strong>no need to turn it in</strong>. The goal is to install and get familiar with the following tools:</p>
+<div class="toc">
+<ul>
+<li><a href="#unix-shell">Unix shell</a><ul>
+<li><a href="#basics">Basics</a></li>
+<li><a href="#a-mini-tutorial-for-the-emacs-editor">A mini tutorial for the emacs editor</a></li>
+<li><a href="#a-mini-tutorial-for-the-vim-editor">A mini tutorial for the vim editor</a></li>
+<li><a href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li><a href="#r">R</a><ul>
+<li><a href="#exercise_1">Exercise</a></li>
+</ul>
+</li>
+<li><a href="#git-and-github">Git and GitHub (optional)</a></li>
+</ul>
+</div>
+<p>The only item required to complete the homework is R. Minimal familiarity with the Unix command line will be helpful. We recommend using Git to collaborate in the Kaggle competition, but this is entirely optional. </p>
+<p>The first few homeworks will involve modifying simple scripts in R and will assume little to no knowledge of these languages. Later homeworks will include more complex programming assignments. </p>
+<hr>
+
+<h2 id="unix-shell">Unix shell</h2>
+<h3 id="basics">Basics</h3>
+<p>First, fire up a shell:</p>
+<ul>
+<li><strong>Mac OS X users</strong>: Open the application Terminal.</li>
+<li><strong>Windows users</strong>: Download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a>, and install it in your computer if you don't already have this application. You will work in a remote computer in the Stanford Farmshare system, so you will need an internet connection. To configure PuTTY, click on the 'Session' tab on the left banner, and enter rice.stanford.edu under both 'Host name' and 'Saved sessions'; then click save. Log in to the rice server by clicking 'Open' and entering your SUNet credentials. For the duration of the class your storage quota has been increased by 5 GB. You will also need to install <a href="http://www.straightrunning.com/XmingNotes/">Xming</a> in order to view a brower on rice remotely.
+</li>
+</ul>
+<p>Now, you are ready to learn some commands. Go through as much of <a href="http://www.cs.sfu.ca/~ggbaker/reference/unix">this tutorial</a> as possible. If you're starting from scratch, it should take 1 to 2 hours. It will be useful to keep this link handy on your bookmarks bar for the rest of the quarter. </p>
+<h3 id="a-mini-tutorial-for-the-emacs-editor">A mini tutorial for the emacs editor</h3>
+<p>To write files from a Unix shell, we use a program called an <em>editor</em>. You may use your favorite one. If you are not familiar with any editor, I recommend emacs or vim. </p>
+<p>To create a file with emacs, type the command <code>emacs hello_world.txt</code>.
+Type the phrase <code>Hello world</code>. You should see the words entered into the file.
+To save the file type <code>Ctrl-x Ctrl-s</code>.  In emacs commands, "Ctrl-" is typically abbreviated as "C-" as in <code>C-x C-s</code>.</p>
+<p>To be able to use emacs efficiently, you should familiarize yourself with a number of commands. For example:</p>
+<ul>
+    <li>
+        <p><strong>Saving, quitting, and opening files:</strong></p>
+        <ul>
+            <li><code>C-x C-s</code> save</li>
+            <li><code>C-x c</code> quit</li>
+            <li><code>C-x C-w</code> save file as</li>
+            <li><code>C-x C-f</code> open file</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Moving the cursor:</strong></p>
+        <ul>
+            <li><code>C-[right arrow]</code> jump to next word</li>
+            <li><code>C-[left arrow]</code> jump to previous word</li>
+            <li><code>C-[down arrow]</code> jump next paragraph</li>
+            <li><code>C-[up arrow]</code> jump previous paragraph</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Copy and paste:</strong></p>
+        <ul>
+            <li><code>C-k</code> kill (that is, cut) text between cursor and end of line</li>
+            <li><code>C-[spacebar]</code> set copy region marker</li>
+            <li><code>C-w</code> kill text between copy region marker and cursor</li>
+            <li><code>C-y</code> yank (that is, paste) previously killed text</li>
+            <li><code>C-_</code> undo </li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Search:</strong></p>
+        <ul>
+            <li><code>C-s</code> search forward</li>
+            <li><code>C-r</code> search backward</code></li>
+        </ul>
+    </li>
+</ul>
+<p>See <a href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/">this tutorial</a> for a more complete list of commands.</p>
+<h3 id="a-mini-tutorial-for-the-vim-editor">A mini tutorial for the vim editor</h3>
+<p>There are two fundamental modes in vim:</p>
+<ul>
+<li><strong>Command mode</strong>: everything you type is a command that allows you to move the cursor around, delete and copy text, search for words, save the file, quit, etc.</li>
+<li><strong>Insert mode</strong>: everything you type (save for special keys) is added to the file, as would happen in a word processor; however, you can only move the cursor with the arrow keys, not the mouse.</li>
+</ul>
+<p>To create a file with vim, type the command <code>vim hello_world.txt</code>. The editor starts in command mode. We can switch to insert mode by typing <code>i</code>. You should see the message <code>-- INSERT --</code> appear at the bottom of your window. To go back to command mode, press the escape key. The message should now disappear. Toggle back and forth between the two modes.</p>
+<p>In insert mode, type the phrase <code>Hello world</code>. You should see the words entered into the file. To save the file, go to command mode, type <code>:w</code> and enter. </p>
+<p>To be able to use vim efficiently, you must get used to the wealth of commands available in command mode. Some examples:</p>
+<ul>
+<li>
+<p><strong>Saving and quitting:</strong></p>
+<ul>
+<li><code>:w</code> save</li>
+<li><code>:wq</code> save and quit</li>
+<li><code>:q</code> quit</li>
+<li><code>:q!</code> quit, ignoring changes</li>
+<li><code>:u</code> undo</li>
+</ul>
+</li>
+<li>
+<p><strong>Moving the cursor:</strong></p>
+<ul>
+<li><code>0</code> first column of the line</li>
+<li><code>^</code> first non-blank character of the line</li>
+<li><code>$</code> jump to the last character of the line</li>
+<li><code>w</code> jump to next word</li>
+<li><code>b</code> jump to word-beginning</li>
+<li><code>}</code> jump over a block of lines</li>
+<li><code>%</code> jump to matching bracket</li>
+<li><code>*</code> go to next occurrence of word under cursor</li>
+<li><code>#</code> go to previous occurrence of word under cursor</li>
+</ul>
+</li>
+<li>
+<p><strong>Copy and paste:</strong></p>
+<ul>
+<li><code>yy</code> copy or <em>yank</em> current line</li>
+<li><code>88yy</code> copy 88 lines</li>
+<li><code>p</code> paste </li>
+</ul>
+</li>
+<li>
+<p><strong>Search:</strong></p>
+<ul>
+<li><code>/foo</code> search the document for the next occurrence of <code>foo</code></li>
+<li><code>?foo</code> search the document for the previous occurrence of <code>foo</code></li>
+</ul>
+</li>
+</ul>
+<p>See <a href="http://blog.interlinked.org/tutorials/vim_tutorial.html">this tutorial</a> for a more complete list of commands and a discussion of the visual mode (yet another useful mode!).</p>
+<h3 id="exercise">Exercise</h3>
+<ol>
+<li>
+<p>If you are not already on rice.stanford.edu, log into it by entering the command
+    <code>ssh [your SUNet ID]@rice.stanford.edu</code> in your Terminal or Putty window (please review the Unix Basics section above if you are unfamiliar with Terminal or Putty).</p>
+</li>
+<li>
+<p>Move to your <code>WWW</code> directory.</p>
+</li>
+<li>
+<p>Create a directory called <code>stats202-hw0</code>.</p>
+</li>
+<li>
+<p>Create a file <code>index.html</code> in this directory with the string <code>Hello world</code> using emacs or vim.</p>
+</li>
+<li>
+<p>Check in a browser that <code>www.stanford.edu/~[your SUNet ID]/stats202-hw0/</code> displays the string.</p>
+</li>
+<li>
+<p>Remove the file and directory you just created.</p>
+</li>
+</ol>
+<hr>
+
+<h2 id="r">R</h2>
+<p>Download and install <a href="http://cran.r-project.org/">R</a>, and then <a href="http://www.rstudio.com/">Rstudio</a>.</p>
+<h3 id="exercise_1">Exercise</h3>
+<p>There are excellent resources to learn R online. Section 2.3 of the book (pp. 42-51) has a short introduction, which you can go through by typing all the commands into Rstudio. You can also check out the web app <a href="http://tryr.codeschool.com/">Try R</a>.</p>
+<p>You will find it very convenient to write your homework solutions in R Markdown. This is a simple syntax that allows you to intersperse formatted text (with headers, lists, math notation in LaTeX) with chunks of R code. Rstudio comes with an interpreter which runs the R code and formats the text around the output. You can read more about it <a href="http://rmarkdown.rstudio.com/">here</a>, and give it a try by clicking 'File > New file > R Markdown' which opens a helpful template.
+</p>
+<hr>
+
+<h2 id="git-and-github">Git and GitHub (optional)</h2>
+<p>Git is a revision control system that has become dominant in software development. Revision control allows you to back up a set of files at different points in time. This is tremendously useful for software projects in which rapid iteration is necessary -- it allows you to try many things out and, if anything breaks, easily revert to a previous version. </p>
+<p>Git can make your life a lot easier in the Kaggle competition, as you will be modifying and testing your prediction methods frequently as a team.</p>
+<p>Git is already installed on rice. To use it in your computer, you will have to install it. You may find installers for Windows and Mac OSX <a href="http://git-scm.com/book/en/Getting-Started-Installing-Git">here</a>.</p>
+<p>I recommend the following two resources to learn Git:</p>
+<ul>
+<li><a href="http://git-scm.com/docs/gittutorial">Git Tutorial</a>: long, but very thorough.</li>
+<li><a href="http://try.github.io/">Try Git</a>: interactive tutorial to get started with Git in 15 minutes.</li>
+</ul>
+<p>GitHub is a web hosting service for software development projects that use Git for revision control, making it easy for multiple people to collaborate on software projects in an organized fashion. It is also something of a social network for programmers.</p>
+<p>To use GitHub, you will need to create an account on http://www.github.com and set up ssh keys on your computer. Instructions to do this can be found in <a href="http://lifehacker.com/5983680/how-the-heck-do-i-use-github">this article</a>.</p>
+<p>In the Kaggle competition, you have several options. You may:</p>
+<ol>
+<li>Use a different revision control system, or no revision control system at all.</li>
+<li>Use Git on your computer or in rice.stanford.edu to develop your predictive methods individually.</li>
+<li>Host a project on Github that is administered by all the members of your team. Develop different branches of the code and merge them as necessary. For example, someone may write a script to transform or augment a group of variables, while another person tests different regression methods. You can seamlessly combine these two contributions into a single pipeline using Git.</li>
+</ol>
+
+
+	</div>
+      </div>
+<hr>
+
+      <footer>
+	<div class="container">
+	<div align="center"><small>&copy;2017-2018 Stats 202 Course Staff</small></div>
+	</div>
+      </footer>
+
+    </div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>
+
